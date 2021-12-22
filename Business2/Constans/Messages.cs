@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business2.Constans
@@ -19,5 +20,7 @@ namespace Business2.Constans
         public static string BrandListed = "markalar listelendi ";
         internal static string CarImagesListed;
         internal static string CarImageLimitExceeded;
+
+        public static string AuthorizationDenied = "";
     }
 }

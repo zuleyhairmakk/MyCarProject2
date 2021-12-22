@@ -1,9 +1,8 @@
-﻿using Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-namespace Entity.Concrete
+using Core.Entities;
+namespace Core.Entities.Concrete
 {
     public   class Users:IEntity
     {

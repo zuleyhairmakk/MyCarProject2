@@ -1,7 +1,9 @@
 ﻿using Business2.Abstract;
+using Business2.BusinessAspects.Autofac;
 using Business2.Constans;
 using Business2.ValidationRules;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entity.Concrete;
@@ -9,6 +11,7 @@ using Entity.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities;
 
 namespace Business2.Concrete
 {
@@ -19,6 +22,7 @@ namespace Business2.Concrete
         {
             _userDal = userDal;
         }
+        [SecuredOperation("user.add")]
         [ValidationAspect(typeof(UserValidator))]
         public IResults Add(Users user)
         {
