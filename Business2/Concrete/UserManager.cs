@@ -18,31 +18,25 @@ namespace Business2.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
+
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
         }
-        [SecuredOperation("user.add")]
-        [ValidationAspect(typeof(UserValidator))]
-        public IResults Add(Users user)
+
+        public List<OperationClaim> GetClaims(Users user)
+        {
+            return _userDal.GetClaims(user);
+        }
+
+        public void Add(Users user)
         {
             _userDal.Add(user);
-            return new SuccessResult(Messages.UserAdded);
         }
 
-        public IDataResult<List<Users>> GetAll()
+        public Users GetByMail(string email)
         {
-           return new SuccessDataResult<List<Users>>(_userDal.GetAll(),Messages.UserListed);
-        }
-
-        public IDataResult<List<Users>> GetByFirstName(string name)
-        {
-            return new SuccessDataResult<List<Users>>(_userDal.GetAll(p=>p.FirstName== name));
-        }
-
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
-        {
-            return new SuccessDataResult<List<CarDetailDto>>();
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

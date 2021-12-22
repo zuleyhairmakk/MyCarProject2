@@ -10,9 +10,8 @@ namespace Business2.Abstract
 {
   public   interface IUserService
     {
-        IDataResult<List<Users>> GetAll();
-        IDataResult<List<CarDetailDto>> GetCarDetails();
-        IResults Add(Users user);
-        IDataResult<List<Users>> GetByFirstName(string name);
+        List<OperationClaim> GetClaims(Users user);
+        void Add(Users user);
+        Users GetByMail(string email);
     }
 }
