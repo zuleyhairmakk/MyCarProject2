@@ -9,9 +9,14 @@ namespace Business2.Abstract
 {
    public  interface ICustomerService
     {
-        IDataResult<List<Customer>> GetAll();
-        IDataResult<List<CarDetailDto>> GetCarDetails();
+
         IResults Add(Customer customer);
-        IDataResult<List<Customer>> GetByCustomerId(int id);
+        IResults Delete(Customer customer);
+        IResults Update(Customer customer);
+        IDataResult<List<CarDetailDto>> GetCarDetails();
+        IDataResult<List<Customer>> GetAll();
+        IDataResult<Customer> GetById(int customerId);
+      //  IDataResult<UserWhoIsCustomerDto> GetByEmail(string email);
     }
 }
+;

@@ -11,13 +11,13 @@ namespace Business2.ValidationRules.FluentValidation
         public CarValidator()
         {
             RuleFor(c => c.CarName).NotEmpty();
-            RuleFor(c => c.CarName).MaximumLength(2);
-            RuleFor(c => c.CarName).Must(StartWithA);
+            RuleFor(c => c.CarName).MinimumLength(2);
+            //RuleFor(c => c.CarName).Must(StartWithA).WithMessage("Car name must start with A letter.");
+
+            RuleFor(c => c.DailyPrice).NotEmpty();
+            RuleFor(c => c.DailyPrice).GreaterThan(0);
         }
 
-        private bool StartWithA(string arg)
-        {
-            return arg.StartsWith("A");
-        }
+       
     }
 }

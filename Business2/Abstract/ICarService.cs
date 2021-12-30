@@ -13,5 +13,8 @@ namespace Business2.Abstract
         IDataResult< List<CarDetailDto>> GetCarDetails();
         IResults Add(Car car );
         IDataResult< List<Car>> GetByDailyPrice(int price );
+        IDataResult<Car> GetById(int carId);
+        IResults Update(Car car);
+        IResults AddTransactionalTest(Car car);
     }
 }

@@ -41,23 +41,26 @@ namespace Business2.Concrete
 
         public IDataResult<Users> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
+            var userToCheck = _userService.GetByEmail(userForLoginDto.Email);
             if (userToCheck == null)
             {
                 return new ErrorDataResult<Users>(Messages.UserNotFound);
             }
 
-            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
+            if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.Data.PasswordHash, userToCheck.Data.PasswordSalt))
             {
                 return new ErrorDataResult<Users>(Messages.PasswordError);
             }
 
-            return new SuccessDataResult<Users>(userToCheck, Messages.SuccessfulLogin);
+            return new SuccessDataResult<Users>(userToCheck.Data, Messages.SuccessfulLogin);
         }
 
         public IResults UserExists(string email)
         {
-            if (_userService.GetByMail(email) != null)
+           
+            
+            if (_userService.GetByEmail(email).Data !=null)
+       
             {
                 return new ErrorResult(Messages.UserAlreadyExists);
             }
@@ -67,7 +70,7 @@ namespace Business2.Concrete
         public IDataResult<AccessToken> CreateAccessToken(Users user)
         {
             var claims = _userService.GetClaims(user);
-            var accessToken = _tokenHelper.CreateToken(user, claims);
+            var accessToken = _tokenHelper.CreateToken(user, claims.Data);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
     }

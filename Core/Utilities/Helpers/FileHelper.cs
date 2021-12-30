@@ -9,117 +9,118 @@ namespace Core.Utilities.Helpers
 {
     public class FileHelper
     {
-        private static string _currentDirectory = Environment.CurrentDirectory + "\\wwwroot";
-        private static string _folderName = "\\images\\";
+        public static string DefaultImagePath = Directory.GetCurrentDirectory() + @"\upload_images\no-image.jpg";
+        public static string UploadImagePath = Directory.GetCurrentDirectory() + @"\upload_images";
 
 
-
-
-        public static IResults Upload(IFormFile file)
+        public static string CreatePath(IFormFile file)
         {
-            var fileExists = CheckFileExists(file);
-            if (fileExists.Message != null)
-            {
-                return new ErrorResult(fileExists.Message);
-            }
 
-            var type = Path.GetExtension(file.FileName);
-            var typeValid = CheckFileTypeValid(type);
-            var randomName = Guid.NewGuid().ToString();
+            FileInfo fileInfo = new FileInfo(file.FileName);
 
-            if (typeValid.Message != null)
-            {
-                return new ErrorResult(typeValid.Message);
-            }
+            string path = Path.Combine(UploadImagePath);
+            string fileExtension = fileInfo.Extension;
+            string uniqueFilename = Guid.NewGuid().ToString() + fileExtension;
+            string result = $@"{path}\{uniqueFilename}";
 
-            CheckDirectoryExists(_currentDirectory + _folderName);
-            CreateImageFile(_currentDirectory + _folderName + randomName + type, file);
-            return new SuccessResult((_folderName + randomName + type).Replace("\\", "/"));
+            return result;
 
-
-
-        }
-        public static IResults Update(IFormFile file, string imagePath)
-        {
-            var fileExists = CheckFileExists(file);
-            if (fileExists.Message != null)
-            {
-                return new ErrorResult(fileExists.Message);
-            }
-
-            var type = Path.GetExtension(file.FileName);
-            var typeValid = CheckFileTypeValid(type);
-            var randomName = Guid.NewGuid().ToString();
-
-            if (typeValid.Message != null)
-            {
-                return new ErrorResult(typeValid.Message);
-            }
-
-            DeleteOldImageFile((_currentDirectory + imagePath).Replace("/", "\\"));
-            CheckDirectoryExists(_currentDirectory + _folderName);
-            CreateImageFile(_currentDirectory + _folderName + randomName + type, file);
-            return new SuccessResult((_folderName + randomName + type).Replace("\\", "/"));
         }
 
 
-
-        public static IResults Delete(string path)
+        public static string AddFile(IFormFile file)
         {
-            DeleteOldImageFile((_currentDirectory + path).Replace("/", "\\"));
-            return new SuccessResult();
-        }
 
+            string result;
 
-
-
-
-
-
-        private static void CreateImageFile(string directory, IFormFile file)
-        {
-            using (FileStream fs = File.Create(directory))
+            try
             {
-                file.CopyTo(fs);
-                fs.Flush();
+                if (file == null)
+                {
+                    result = DefaultImagePath;
+
+                    return result;
+                }
+                else
+                {
+                    result = CreatePath(file);
+
+                    var sourcePath = Path.GetTempFileName();
+
+                    using (var stream = new FileStream(sourcePath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+
+                    File.Move(sourcePath, result);
+
+                    return result;
+                }
             }
-        }
-
-
-        private static void CheckDirectoryExists(string directory)
-        {
-            if (!Directory.Exists(directory))
+            catch (Exception exception)
             {
-                Directory.CreateDirectory(directory);
-            }
-        }
-
-
-        private static IResults CheckFileTypeValid(string type)
-        {
-            if (type != ".jpeg" && type != ".png" && type != ".jpg")
-            {
-                return new ErrorResult("Wrong file type.");
-            }
-            return new SuccessResult();
-        }
-
-
-        private static IResults CheckFileExists(IFormFile file)
-        {
-            if (file != null && file.Length > 0)
-            {
-                return new SuccessResult();
-            }
-            return new ErrorResult("File doesn't exists.");
-        }
-        private static void DeleteOldImageFile(string directory)
-        {
-            if (File.Exists(directory.Replace("/", "\\")))
-            {
-                File.Delete(directory.Replace("/", "\\"));
+                return exception.Message;
             }
 
         }
+
+
+        public static string DeleteFile(string imagePath)
+        {
+
+            try
+            {
+                File.Delete(imagePath);
+
+                return "Deleted";
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+
+        }
+
+
+        public static string UpdateFile(IFormFile file, string oldImagePath)
+        {
+
+            string result;
+
+            try
+            {
+                if (file == null)
+                {
+                    File.Delete(oldImagePath);
+
+                    result = DefaultImagePath;
+
+                    return result;
+                }
+                else
+                {
+                    result = CreatePath(file);
+
+                    var sourcePath = Path.GetTempFileName();
+
+                    using (var stream = new FileStream(sourcePath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+
+                    File.Move(sourcePath, result);
+
+                    File.Delete(oldImagePath);
+
+                    return result;
+                }
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+
+        }
+
     }
 }

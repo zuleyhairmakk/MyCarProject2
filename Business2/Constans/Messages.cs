@@ -19,8 +19,8 @@ namespace Business2.Constans
         public static string ColorListed = "renk listelendi ";
         public static string ColorAdded = "ColorAdded ";
         public static string BrandListed = "BrandListed ";
-        internal static string CarImagesListed;
-        internal static string CarImageLimitExceeded;
+        public static string CarImagesListed= "Car Images Listed";
+        public static string CarImageLimitExceeded= " Car Image Limit Exceeded";
 
         public static string AuthorizationDenied = "AuthorizationDenied";
      public static string UserRegistered= "UserRegistered ";
@@ -29,5 +29,32 @@ namespace Business2.Constans
       public static string SuccessfulLogin="successfull login  ";
        public static string UserAlreadyExists="user already exists";
         public static string AccessTokenCreated= "AccessTokenCreated;";
+        public static string CarImageNotFound = "Car Image Not Found";
+        public static string CarImageDeleted= "Car Image Deleted";
+        public static string CarImageUpdated = "Car Image Updated";
+        public static string MessageListed = "Message Listed";
+        public static string CarImageNumberError = "Car Image Number Error";
+        public static string CarImageAdded= "Car Image Added";
+        public static string UserDeleted = "User Deleted";
+        public static string UserUpdated = "User Updated";
+        public static string  MessageNotListed = "Message Not Listed"; 
+        public static string CarUpdated= "Car Updated";
+        public static string BrandAdded = "Brand Added";
+        public static string BrandDeleted = "Brand Deleted";
+        public static string BrandUpdated = "Brand Updated";
+        public static string ColorDeleted = "Color Deleted";
+        public static string CustomerDeleted = "Customer Deleted";
+        public static string CustomerUpdated = "Customer Updated";
+        public static string FindeksScoreIsNotEnough = "Findeks Score Is Not Enough";
+        public static string CarIsAlreadyRented = "Car Is Already Rented";
+        public static string RentalAdded = "Rental Added";
+        public static string RentalDeleted = "Rental Deleted";
+        public static string RentalUpdated = "Rental Updated";
+        public static string ColorUpdated = "Color Updated";
+        internal static string PaymentAdded;
+        internal static string CardAdded;
+        internal static string CardDeleted;
+        internal static string CardIsExists;
+        internal static string CardUpdated;
     }
 }

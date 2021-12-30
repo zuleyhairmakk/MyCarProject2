@@ -6,7 +6,7 @@ namespace Business2.CCS
     {
         public void Log()
         {
-            Console.WriteLine("eritabanina loglandi");
+            Console.WriteLine("veritabanina loglandi");
         }
     }
 }

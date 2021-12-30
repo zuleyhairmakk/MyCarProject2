@@ -9,11 +9,13 @@ namespace Business2.Abstract
 {
     public interface IRentalService
     {
+        IResults Add(Rental rental);
+        IResults Delete(Rental rental);
+        IResults Update(Rental rental);
         IDataResult<List<Rental>> GetAll();
+        IDataResult<Rental> GetById(int rentalId);
+        IDataResult<Rental> GetIdByRentalInfos(int carId, int customerId, DateTime rentDate, DateTime returnDate);
         IDataResult<List<CarDetailDto>> GetCarDetails();
-       
-        IDataResult<List<Rental>> GetByRentDate(string  rentDate);
-        IDataResult<List<Rental>> GetByReturnDate(string returnDate);
-        IDataResult<List<Rental>> GetByCarId(int carId);
+       // IDataResult<List<RentalDetailDto>> GetRentalDetails();;
     }
 }
