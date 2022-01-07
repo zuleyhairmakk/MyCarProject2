@@ -52,6 +52,13 @@ namespace Business2.Concrete
 
 
         [CacheAspect]
+        [PerformanceAspect(5)]
+        public IDataResult<UserWhoIsCustomerDto> GetByEmail(string email)
+        {
+            return new SuccessDataResult<UserWhoIsCustomerDto>(_customerDal.GetCustomerIdOfUser(email));
+        }
+
+        [CacheAspect]
         [PerformanceAspect(10)]
         public IDataResult<Customer> GetById(int customerId)
         {

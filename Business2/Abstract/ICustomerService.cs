@@ -16,7 +16,7 @@ namespace Business2.Abstract
         IDataResult<List<CarDetailDto>> GetCarDetails();
         IDataResult<List<Customer>> GetAll();
         IDataResult<Customer> GetById(int customerId);
-      //  IDataResult<UserWhoIsCustomerDto> GetByEmail(string email);
+       IDataResult<UserWhoIsCustomerDto> GetByEmail(string email);
     }
 }
 ;

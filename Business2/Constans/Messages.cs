@@ -51,10 +51,13 @@ namespace Business2.Constans
         public static string RentalDeleted = "Rental Deleted";
         public static string RentalUpdated = "Rental Updated";
         public static string ColorUpdated = "Color Updated";
-        internal static string PaymentAdded;
-        internal static string CardAdded;
-        internal static string CardDeleted;
-        internal static string CardIsExists;
-        internal static string CardUpdated;
+        public static string PaymentAdded = "Payment Added";
+        public static string CardAdded= "Card Added";
+        public static string CardDeleted = "Card Deleted";
+        public static string CardIsExists = "Card Is Exists";
+        public static string CardUpdated = "Card Updated";
+        public static string CommentAdded = "Comment Added";
+        public static string CommentDeleted = "Comment Deleted";
+        internal static string CarDeleted;
     }
 }

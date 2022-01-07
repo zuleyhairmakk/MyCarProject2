@@ -12,10 +12,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, CarContext>, IRentalDal
     {
-        public FindeksScoreDto GetFindeksScores(int customerId, int carId)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<RentalDetailDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
         {
@@ -39,5 +36,24 @@ namespace DataAccess.Concrete.EntityFramework
                 return result.ToList();
             }
         }
+
+
+        public FindeksScoreDto GetFindeksScores(int carId, int customerId)
+        {
+            using (CarContext context = new CarContext())
+            {
+                var result = from c in context.Cars.Where(c => c.CarId == carId)
+                             from cu in context.Customers.Where(cu => cu.CustomerId == customerId)
+                             select new FindeksScoreDto
+                             {
+                                 CarMinFindeksScore = c.MinFindeksScore,
+                                 CustomerFindeksScore = cu.FindeksScore,
+                             };
+
+                return result.SingleOrDefault();
+            };
+        }
+
+
     }
 }

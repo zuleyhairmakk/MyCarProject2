@@ -37,8 +37,24 @@ namespace WebAPI.Controllers
             }
         }
 
+        [HttpPost("delete")]
+        public IActionResult Delete(Car car)
+        {
+            var result = _carService.Delete(car);
 
-       
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+
+
+
 
 
 
@@ -91,8 +107,67 @@ namespace WebAPI.Controllers
         }
 
 
+        [HttpGet("getcardetails")]
+        public IActionResult GetCarDetails(int carId)
+        {
+            var result = _carService.GetCarDetails(carId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+
+        [HttpGet("getcarsbybrand")]
+        public IActionResult GetCarDetailsByBrand(int brandId)
+        {
+            var result = _carService.GetCarDetailsByBrand(brandId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        [HttpGet("getcarsbycolor")]
+        public IActionResult GetCarDetailsByColor(int colorId)
+        {
+            var result = _carService.GetCarDetailsByColor(colorId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+
+        }
 
 
+
+        [HttpGet("getcarsbyfilter")]
+        public IActionResult GetCarDetailsByFilter(int brandId, int colorId)
+        {
+            var result = _carService.GetCarDetailsByFilter(brandId, colorId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
 
 
 
@@ -107,4 +182,4 @@ namespace WebAPI.Controllers
 
     }
 
-}
+    }
