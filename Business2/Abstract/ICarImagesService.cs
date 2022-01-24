@@ -11,10 +11,12 @@ namespace Business2.Abstract
     {
 
 
-        IResults Add(CarImages carImage, IFormFile file);
+        IResults Add(IFormFile file, CarImages carImage);
         IResults Delete(CarImages carImage);
-        IResults Update(CarImages carImage, IFormFile file);
+        IResults Update(IFormFile file, CarImages carImage);
+
         IDataResult<List<CarImages>> GetAll();
-        IDataResult<CarImages> GetById(int colorId);
+        IDataResult<List<CarImages>> GetByCarId(int carId);
+        IDataResult<CarImages> GetByImageId(int imageId);
     }
 }
