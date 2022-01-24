@@ -29,8 +29,8 @@ namespace Business2.Concrete
             _carImageDal = carimageDal;
         }
 
-
-        [ValidationAspect(typeof(CarImagesValidator))]
+        //[SecuredOperation("admin")]
+       [ValidationAspect(typeof(CarImagesValidator))]
         [CacheRemoveAspect("ICarImageService.Get")]
 
         public IResults Add(CarImages carImage, IFormFile file)

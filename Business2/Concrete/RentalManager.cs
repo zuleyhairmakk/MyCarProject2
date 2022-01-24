@@ -91,6 +91,12 @@ namespace Business2.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>();
         }
+        [CacheAspect]
+        [PerformanceAspect(5)]
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.MessageListed);
+        }
 
 
 

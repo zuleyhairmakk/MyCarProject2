@@ -9,9 +9,10 @@ namespace Core.Utilities.Helpers
 {
     public class FileHelper
     {
-        public static string DefaultImagePath = Directory.GetCurrentDirectory() + @"\upload_images\no-image.jpg";
         public static string UploadImagePath = Directory.GetCurrentDirectory() + @"\upload_images";
-
+        public static string DefaultImagePath = Directory.GetCurrentDirectory() + @"\upload_images\no-image.jpg";
+     
+        //create path i nerde cagiriyi 
 
         public static string CreatePath(IFormFile file)
         {

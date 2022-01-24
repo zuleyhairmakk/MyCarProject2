@@ -9,5 +9,6 @@ namespace Entity.Concrete
     {
         public int CommentId { get; set; }
         public string CommentContent { get; set; }
+        public string Sentiment { get; set; }
     }
 }

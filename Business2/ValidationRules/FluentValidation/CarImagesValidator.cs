@@ -13,7 +13,7 @@ namespace Business2.ValidationRules.FluentValidation
 
 
            
-                RuleFor(ci => ci.ImagePath).NotEmpty();
+              RuleFor(ci => ci.ImagePath).NotEmpty();
             
         }
     }

@@ -39,7 +39,7 @@ namespace Business2.Concrete
         }
 
 
-       [SecuredOperation("admin")]
+       //[SecuredOperation("admin")]
        
         public IResults Delete(Users user)
         {

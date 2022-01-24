@@ -58,6 +58,8 @@ namespace Business2.Constans
         public static string CardUpdated = "Card Updated";
         public static string CommentAdded = "Comment Added";
         public static string CommentDeleted = "Comment Deleted";
-        internal static string CarDeleted;
+        public static string CarDeleted= "CarDeleted";
+        public static string CurrentPasswordIsWrong= "CurrentPasswordIsWrong";
+        public static string PasswordUpdated= "PasswordUpdated";
     }
 }

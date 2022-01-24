@@ -43,7 +43,8 @@ namespace Business2.Concrete
         }
 
 
-        [CacheAspect]
+         [CacheAspect]
+        [CacheRemoveAspect("ICustomerService.Get")]
         [PerformanceAspect(10)]
         public IDataResult<List<Customer>> GetAll()
         {
@@ -72,7 +73,7 @@ namespace Business2.Concrete
 
 
 
-        [SecuredOperation("admin,customer.update")]
+       [SecuredOperation("admin")]
         [ValidationAspect(typeof(CustomerValidator))]
         [CacheRemoveAspect("ICustomerService.Get")]
         public IResults Update(Customer customer)

@@ -73,5 +73,27 @@ namespace Business2.Concrete
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
         }
+        public IResults ChangePassword(UserForChangingPasswordDto userForChangingPasswordDto)
+        {
+            Users userInfos = _userService.GetById(userForChangingPasswordDto.Id).Data;
+
+            if (!HashingHelper.VerifyPasswordHash(userForChangingPasswordDto.CurrentPassword,
+                                                  userInfos.PasswordHash,
+                                                  userInfos.PasswordSalt))
+            {
+                return new ErrorResult(Messages.CurrentPasswordIsWrong);
+            }
+
+            HashingHelper.CreatePasswordHash(userForChangingPasswordDto.NewPassword,
+                                             out byte[] passwordHash,
+                                             out byte[] passwordSalt);
+
+            userInfos.PasswordHash = passwordHash;
+            userInfos.PasswordSalt = passwordSalt;
+
+            _userService.Update(userInfos);
+
+            return new SuccessResult(Messages.PasswordUpdated);
+        }
     }
 }
