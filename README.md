@@ -16,7 +16,7 @@ The database in this project was MSSQL Localdb. To build the database, go to Vis
 
 + **Entities Layer:** It's here that the object classes that will be used throughout the application are specified. Each class in this layer corresponds to a database table, and it also contains DTO (Data Transfer Object) classes that link data from multiple tables
 
-+ **Data Access Layer: It's the layer that handles database connections and operations. The necessary database connection setting is completed here. This layer also encodes activities like data extraction, addition, deletion, and updating.
++ **Data Access Layer:** It's the layer that handles database connections and operations. The necessary database connection setting is completed here. This layer also encodes activities like data extraction, addition, deletion, and updating.
 
 + **Business Layer:** It is the layer where business rules are defined and controlled. When a command comes to the program, what actions it should perform and which set of rules it should pass through are defined here. Cross-Cutting Concerns are triggered in this layer.
 
@@ -65,6 +65,14 @@ The database in this project was MSSQL Localdb. To build the database, go to Vis
   - Service Collection
 
   -   Validation Error Details
+
+    
+
+    
+
+
+
+
 
     
 
