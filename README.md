@@ -6,7 +6,7 @@ The database in this project was MSSQL Localdb. To build the database, go to Vis
 
 # DATABASE ER DIAGRAM:
 
-![er diagram](C:\Users\züleyha\AppData\Roaming\Typora\typora-user-images\image-20220207204806734.png)
+![er diagram](C:\Users\züleyha\image-20220207204806734.png)
 
 # LAYERED ARCHITECTURE:
 
