@@ -6,7 +6,7 @@ The database in this project was MSSQL Localdb. To build the database, go to Vis
 
 # DATABASE ER DIAGRAM:
 
-![er diagram](C:\Users\züleyha\image-20220207204806734.png)
+![databaseer](https://user-images.githubusercontent.com/87870858/157235470-610afabb-0feb-4b2b-9f4b-68eae04f07cd.png)
 
 # LAYERED ARCHITECTURE:
 
