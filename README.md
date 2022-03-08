@@ -12,7 +12,7 @@ The database in this project was MSSQL Localdb. To build the database, go to Vis
 
 + I used layered architecture while preparing the backend of our project. The names of these layers are Business, Core, DataAccess, Entity and WebApi. For each layer, I first created 2 folders called Abstract and Concrete. I wrote the interface codes in the Abstract folder and the codes I used these interfaces in the Concrete folder.
 
-  ![image-20220207205043499](C:\Users\züleyha\AppData\Roaming\Typora\typora-user-images\image-20220207205043499.png)
+![katmanli mimari](https://user-images.githubusercontent.com/87870858/157235313-bc4a579d-73ff-4d69-b77a-54ce77c14a3d.png)
 
 + **Entities Layer:** It's here that the object classes that will be used throughout the application are specified. Each class in this layer corresponds to a database table, and it also contains DTO (Data Transfer Object) classes that link data from multiple tables
 
