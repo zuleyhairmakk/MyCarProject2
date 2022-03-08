@@ -2,7 +2,7 @@
 
 The database in this project was MSSQL Localdb. To build the database, go to Visual Studio 2019 and select "View > SQL Server Object Explorer." A new panel will appear on the left. Follow the path "SQL Server > (localdb)MSSQLLocalDB" from this panel, then right-click on the "Databases" folder in the opened folders below, pick "Add New Database," and build your database. Cars is the name of my database.
 
-![image-20220207204559382](C:\Users\züleyha\AppData\Roaming\Typora\typora-user-images\image-20220207204559382.png)
+![sss](https://user-images.githubusercontent.com/87870858/157235656-dabd5b0e-5fb1-4ecf-afc6-93e7ac210e1b.png)
 
 # DATABASE ER DIAGRAM:
 
